@@ -5,12 +5,12 @@ export default async function Players(): Promise<Player[]> {
     const { data, error } = await supabase
         .from('players')
         .select('*')
-        .order('name', { ascending: true });
+        .order('name_full', { ascending: true });
 
     if (error) {
         console.error('Error fetching players:', error);
         return [];
     }
 
-    return data as Player[];
+    return data as Player[];    
 }

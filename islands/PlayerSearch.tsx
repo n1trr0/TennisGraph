@@ -76,18 +76,13 @@ export default function PlayerSearch() {
             >
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
-                  {player.country && (
-                    <span className={`fi fi-${player.country.toLowerCase()} text-2xl`}></span>
+                  {player.ioc2 && (
+                    <span className={`fi fi-${player.ioc2.toLowerCase()} text-2xl`}></span>
                   )}
                   <h3 className="text-xl font-bold text-gray-900">
-                    {player.name}
+                    {player.name_full}
                   </h3>
                 </div>
-                {player.ranking && (
-                  <span className="text-lg font-bold text-gray-900">
-                    #{player.ranking}
-                  </span>
-                )}
               </div>
             </a>
           ))}

@@ -1,5 +1,6 @@
 import { define } from "../../utils.ts";
 import PlayerFromId from "../../queries/PlayerFromId.ts";
+import PlayerInfoBox from "../../components/PlayerInfoBox.tsx";
 
 export const handler = define.handlers({
   async GET(ctx) {
@@ -21,15 +22,20 @@ export const handler = define.handlers({
 });
 
 export default define.page<typeof handler>(function PlayerPage(props) {
+  const player = props.data;
+
+  if (!player) {
+    return (
+      <div class="min-h-screen bg-gray-50 py-12 px-4">
+        <div class="text-center text-red-600">Jugador no encontrado</div>
+      </div>
+    );
+  }
 
   return (
-    <div class="min-h-screen bg-gray-50 py-12 px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-white border-2 border-gray-800 rounded-xl p-8 shadow-lg">
-          <h1 class="text-4xl font-bold text-gray-900">
-            {props.data.name}
-          </h1>
-        </div>
+    <div class="min-h-screen bg-gray-50 py-12 px-4" style={{ marginTop: '2rem' }}>
+      <div class="mx-auto" style={{ maxWidth: '700px' }}>
+        <PlayerInfoBox player={player} />
       </div>
     </div>
   );

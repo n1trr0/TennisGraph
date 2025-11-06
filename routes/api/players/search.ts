@@ -15,7 +15,7 @@ export const handler = {
             const { data, error } = await supabase
                 .from('players')
                 .select('*')
-                .ilike('name', `%${query}%`)
+                .ilike('name_full', `%${query}%`)
                 .limit(10);
 
             if (error) throw error;
