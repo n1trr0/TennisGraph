@@ -1,172 +1,130 @@
 :root {
-  /* ==========================
-     🔠 Fuentes
-  =========================== */
-  --font-sans: calibre, calibre-fallback, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    --font-sans: calibre, calibre-fallback, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    --color-red-400: oklch(70.4% .191 22.216);
+    --color-red-600: oklch(57.7% .245 27.325);
+    --color-yellow-50: oklch(98.7% .026 102.212);
+    --color-yellow-300: oklch(90.5% .182 98.111);
+    --color-yellow-400: oklch(85.2% .199 91.936);
+    --color-yellow-700: oklch(55.4% .135 66.442);
+    --color-indigo-400: oklch(67.3% .182 276.935);
+    --color-indigo-500: oklch(58.5% .233 277.117);
+    --color-gray-100: oklch(96.7% .003 264.542);
+    --color-gray-300: oklch(87.2% .01 258.338);
+    --color-gray-400: oklch(70.7% .022 261.325);
+    --color-gray-500: oklch(55.1% .027 264.364);
+    --color-gray-700: oklch(37.3% .034 259.733);
+    --color-gray-900: oklch(21% .034 264.665);
+    --color-neutral-300: oklch(87% 0 0);
 
-  /* ==========================
-     🎨 Colores base (OKLCH)
-  =========================== */
-  --color-red-400: oklch(70.4% .191 22.216);
-  --color-red-600: oklch(57.7% .245 27.325);
-  --color-yellow-50: oklch(98.7% .026 102.212);
-  --color-yellow-300: oklch(90.5% .182 98.111);
-  --color-yellow-400: oklch(85.2% .199 91.936);
-  --color-yellow-700: oklch(55.4% .135 66.442);
-  --color-indigo-400: oklch(67.3% .182 276.935);
-  --color-indigo-500: oklch(58.5% .233 277.117);
-  --color-gray-100: oklch(96.7% .003 264.542);
-  --color-gray-300: oklch(87.2% .01 258.338);
-  --color-gray-400: oklch(70.7% .022 261.325);
-  --color-gray-500: oklch(55.1% .027 264.364);
-  --color-gray-700: oklch(37.3% .034 259.733);
-  --color-gray-900: oklch(21% .034 264.665);
-  --color-neutral-300: oklch(87% 0 0);
+    --color-black: #333;
+    --color-white: #fff;
+    --color-primary: #00c1d8;
+    --color-secondary: #0086ff;
+    --color-teal: #00c1d8;
+    --color-green: #32c771;
+    --color-orange: #efa125;
+    --color-red: #dd3636;
+    --color-blue: #0086ff;
 
-  /* ==========================
-     🎨 Colores hex
-  =========================== */
-  --color-black: #333;
-  --color-white: #fff;
-  --color-primary: #00c1d8;
-  --color-secondary: #0086ff;
-  --color-teal: #00c1d8;
-  --color-green: #32c771;
-  --color-orange: #efa125;
-  --color-red: #dd3636;
-  --color-blue: #0086ff;
+    --color-gray-1: #333;
+    --color-gray-2: #151516;
+    --color-gray-3: #202124;
+    --color-gray-4: #303134;
+    --color-gray-5: #909396;
+    --color-gray-6: #ebebeb;
+    --color-gray-7: #f7f7f7;
+    --color-gray-8: #fff;
 
-  /* ==========================
-     ⚫ Grises personalizados
-  =========================== */
-  --color-gray-1: #333;
-  --color-gray-2: #151516;
-  --color-gray-3: #202124;
-  --color-gray-4: #303134;
-  --color-gray-5: #909396;
-  --color-gray-6: #ebebeb;
-  --color-gray-7: #f7f7f7;
-  --color-gray-8: #fff;
+    --team-primary-color: #a3a8ad;
+    --team-secondary-color: #010101;
 
-  /* ==========================
-     🏀 Colores de equipo
-  =========================== */
-  --team-primary-color: #1D4289;
-  --team-secondary-color: #FFC72C;
 
-  /* ==========================
-     📏 Espaciado y tamaños
-  =========================== */
-  --spacing: 0.25rem;
-  --container-2xs: 18rem;
-  --container-xs: 20rem;
-  --container-md: 28rem;
-  --container-xl: 36rem;
-  --container-2xl: 42rem;
-  --container-3xl: 48rem;
-  --container-7xl: 80rem;
+    --spacing: 0.25rem;
+    --container-2xs: 18rem;
+    --container-xs: 20rem;
+    --container-md: 28rem;
+    --container-xl: 36rem;
+    --container-2xl: 42rem;
+    --container-3xl: 48rem;
+    --container-7xl: 80rem;
 
-  /* ==========================
-     🔤 Tipografía
-  =========================== */
-  --text-sm: 0.77rem;
-  --text-sm--line-height: calc(1.25 / 0.875);
-  --text-base: 1rem;
-  --text-base--line-height: 1.5;
-  --text-lg: 1.125rem;
-  --text-lg--line-height: calc(1.75 / 1.125);
-  --text-xl: 1.23rem;
-  --text-xl--line-height: calc(1.75 / 1.25);
-  --text-2xl: 2rem;
-  --text-2xl--line-height: calc(2 / 1.5);
-  --text-3xl: 1.875rem;
-  --text-3xl--line-height: 1.2;
-  --text-4xl: 2.25rem;
-  --text-4xl--line-height: calc(2.5 / 2.25);
-  --text-5xl: 3rem;
-  --text-5xl--line-height: 1;
+    --text-sm: 0.77rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: 1.5;
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.23rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 2rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: 1.2;
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1;
 
-  /* ==========================
-     💪 Pesos de fuente
-  =========================== */
-  --font-weight-extralight: 200;
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
+    --font-weight-extralight: 200;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
 
-  /* ==========================
-     📏 Bordes y radios
-  =========================== */
-  --radius-xs: 0.125rem;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.375rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
-  --radius-3xl: 1.5rem;
+    --radius-xs: 0.125rem;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
 
-  /* ==========================
-     💫 Transiciones y animaciones
-  =========================== */
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --default-transition-duration: 0.15s;
-  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --default-transition-duration: 0.15s;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* ==========================
-     🧱 Layout y comportamiento
-  =========================== */
-  --aspect-video: 16/9;
-  --leading-tight: 1.25;
-  --leading-snug: 1.375;
-  --top-spacing: 62px;
+    --aspect-video: 16/9;
+    --leading-tight: 1.25;
+    --leading-snug: 1.375;
+    --top-spacing: 62px;
 
-  /* ==========================
-     🧩 Fuentes por defecto
-  =========================== */
-  --default-font-family: var(--font-sans);
-  --default-mono-font-family: var(--font-mono);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
 }
 
-/* ==========================
-   📦 Configuración base
-=========================== */
 html, body {
-  -webkit-text-size-adjust: 100%;
-  tab-size: 4;
-  font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
-  font-feature-settings: var(--default-font-feature-settings, normal);
-  font-variation-settings: var(--default-font-variation-settings, normal);
-  -webkit-tap-highlight-color: transparent;
-  font-size: 18px;
-  text-wrap: pretty;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0 solid;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+    font-size: 18px;
+    text-wrap: pretty;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
 }
 
-/* ==========================
-   🧩 Contenedor principal
-=========================== */
 .container-panel {
-  position: relative;
-  display: grid;
-  break-inside: avoid-column;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: center;
-  gap: calc(var(--spacing) * 3);
-  overflow: clip;
-  border-radius: var(--radius-2xl);
-  border-width: 0;
-  padding-inline: calc(var(--spacing) * 3);
-  padding-block: calc(var(--spacing) * 3);
-  line-height: var(--leading-snug);
-  color: var(--team-secondary-color, #333) !important;
-  border-color: var(--color-gray-3);
-  background-color: var(--team-primary-color, #202124) !important;
+    position: relative;
+    display: grid;
+    break-inside: avoid-column;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: calc(var(--spacing) * 3);
+    overflow: clip;
+    border-radius: var(--radius-2xl);
+    border-width: 0;
+    padding-inline: calc(var(--spacing) * 3);
+    padding-block: calc(var(--spacing) * 3);
+    line-height: var(--leading-snug);
+    color: var(--team-secondary-color, #333) !important;
+    border-color: var(--color-gray-3);
+    background-color: var(--team-primary-color, #202124) !important;
 }

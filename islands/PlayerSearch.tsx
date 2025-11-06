@@ -4,8 +4,6 @@ import type { Player } from '../types/player.ts';
 export default function PlayerSearch() {
   const [searchQuery, setSearchQuery] = useState('');
   const [players, setPlayers] = useState<Player[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [_isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
@@ -15,9 +13,6 @@ export default function PlayerSearch() {
         return;
       }
 
-      setLoading(true);
-      setError(null);
-
       try {
         const response = await fetch(`/api/players/search?q=${encodeURIComponent(searchQuery)}`);
         
@@ -26,10 +21,7 @@ export default function PlayerSearch() {
         const data = await response.json();
         setPlayers(data);
       } catch (err) {
-        setError('Error al buscar jugadores');
         console.error(err);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -43,11 +35,7 @@ export default function PlayerSearch() {
 
   return (
     <div className="w-full max-w-6xl px-4">
-      <h1 className="text-6xl font-bold text-center text-gray-900 mb-16">
-        TennisGraph
-      </h1>
-      
-      <form onSubmit={handleSearch} className="relative mb-8">
+      <form onSubmit={handleSearch} className="relative mb-8" style={{ minWidth: '300px' }}>
         <input
           type="text"
           value={searchQuery}
@@ -56,14 +44,9 @@ export default function PlayerSearch() {
           onBlur={() => setIsFocused(false)}
           placeholder="Buscar jugador..."
           className="w-full px-6 py-5 text-2xl bg-white border-2 border-gray-800 rounded-xl focus:outline-none focus:border-blue-600 transition-colors shadow-lg"
+          style={{ minWidth: '300px' }}
         />
       </form>
-
-      {error && (
-        <div className="bg-red-50 border-2 border-red-300 text-red-800 px-6 py-4 rounded-xl mb-4 text-center">
-          {error}
-        </div>
-      )}
 
       {players.length > 0 && (
         <div className="space-y-3">
@@ -86,12 +69,6 @@ export default function PlayerSearch() {
               </div>
             </a>
           ))}
-        </div>
-      )}
-
-      {!loading && searchQuery && players.length === 0 && (
-        <div className="text-center text-gray-600 mt-8 text-lg">
-          No se encontraron jugadores
         </div>
       )}
     </div>
