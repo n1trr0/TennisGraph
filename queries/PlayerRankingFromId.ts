@@ -3,21 +3,21 @@ import { PlayerRanking } from "../types/playerRanking.ts";
 
 export default async function PlayerRankingFromId(id: string): Promise<PlayerRanking | null> {
     try {
-        console.log("Buscando ranking para jugador con ID:", id);
-
-        const { data, error } = await supabase
+        // Obtener el mejor ranking (el menor número)
+        const { data: bestRankData, error: bestRankError } = await supabase
             .from('rankings')
-            .select('rank, ranking_date')
+            .select('rank')
             .eq('player_id', id)
-            .order('rank', { ascending: true });
+            .order('rank', { ascending: true })
+            .limit(1);
 
-        if (error) {
-            console.error('Supabase error:', error);
+        if (bestRankError) {
+            console.error('Supabase error:', bestRankError);
             return null;
         }
 
-
-        if (!data || data.length === 0) {
+        // Si no hay datos de ranking
+        if (!bestRankData || bestRankData.length === 0) {
             return {
                 player_id: id,
                 best_rank: null,
@@ -29,22 +29,25 @@ export default async function PlayerRankingFromId(id: string): Promise<PlayerRan
             };
         }
 
-        // Calcular estadísticas
-        const bestRank = data[0].rank;
-        const weeksTop1 = data.filter(r => r.rank === 1).length;
-        const weeksTop10 = data.filter(r => r.rank <= 10).length;
-        const weeksTop25 = data.filter(r => r.rank <= 25).length;
-        const weeksTop50 = data.filter(r => r.rank <= 50).length;
-        const weeksTop100 = data.filter(r => r.rank <= 100).length;
+        const bestRank = bestRankData[0].rank;
+
+        // Hacer conteos en paralelo con consultas separadas
+        const [top1, top10, top25, top50, top100] = await Promise.all([
+            supabase.from('rankings').select('rank', { count: 'exact', head: true }).eq('player_id', id).eq('rank', 1),
+            supabase.from('rankings').select('rank', { count: 'exact', head: true }).eq('player_id', id).lte('rank', 10),
+            supabase.from('rankings').select('rank', { count: 'exact', head: true }).eq('player_id', id).lte('rank', 25),
+            supabase.from('rankings').select('rank', { count: 'exact', head: true }).eq('player_id', id).lte('rank', 50),
+            supabase.from('rankings').select('rank', { count: 'exact', head: true }).eq('player_id', id).lte('rank', 100)
+        ]);
 
         return {
             player_id: id,
             best_rank: bestRank,
-            weeks_top_1: weeksTop1,
-            weeks_top_10: weeksTop10,
-            weeks_top_25: weeksTop25,
-            weeks_top_50: weeksTop50,
-            weeks_top_100: weeksTop100
+            weeks_top_1: top1.count || 0,
+            weeks_top_10: top10.count || 0,
+            weeks_top_25: top25.count || 0,
+            weeks_top_50: top50.count || 0,
+            weeks_top_100: top100.count || 0
         };
     } catch (err) {
         console.error('Error fetching player ranking:', err);

@@ -8,6 +8,9 @@ export default define.page(function App({ Component }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>TennisGraph</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css" />
+        <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="/playerNav.css" />
+        <link rel="stylesheet" href="/stats.css" />
       </head>
       <body>
         <Component />

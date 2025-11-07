@@ -1,4 +1,3 @@
-import "../assets/stats.css";
 import type { PlayerRanking } from "../types/playerRanking.ts";
 
 interface PlayerRankingBoxProps {

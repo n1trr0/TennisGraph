@@ -1,2 +1,2 @@
-// Import CSS files here for hot module reloading to work.
-import "./assets/styles.css";
+// CSS files are now loaded globally in _app.tsx
+

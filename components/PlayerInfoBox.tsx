@@ -1,4 +1,3 @@
-import "../assets/stats.css";
 import type { Player } from "../types/player.ts";
 
 interface PlayerInfoBoxProps {
