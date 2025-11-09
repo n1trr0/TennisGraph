@@ -7,13 +7,13 @@ export default function Layout({ Component }: PageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center items-center h-16 space-x-12">
             <a href="/" className="text-2xl font-bold text-white hover:text-gray-300 transition-colors">
-              TennisGraph
+              Home
             </a>
             <a 
-              href="/partidos" 
+              href="/" 
               className="text-base font-medium text-gray-300 hover:text-white transition-colors px-4 py-2"
             >
-              Partidos
+              Coming soon...
             </a>
           </div>
         </div>
