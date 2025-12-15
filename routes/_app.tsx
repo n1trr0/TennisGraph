@@ -11,6 +11,7 @@ export default define.page(function App({ Component }) {
         <link rel="stylesheet" href="/styles.css" />
         <link rel="stylesheet" href="/playerNav.css" />
         <link rel="stylesheet" href="/stats.css" />
+        <link rel="stylesheet" href="/matches.css" />
       </head>
       <body>
         <Component />
