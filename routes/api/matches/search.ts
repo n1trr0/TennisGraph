@@ -7,6 +7,7 @@ export const handler = define.handlers({
     const surfaces = url.searchParams.get('surfaces')?.split(',').filter(Boolean) || [];
     const round = url.searchParams.get('round') || null;
     const bestOf = url.searchParams.get('bestOf') || null;
+    const year = url.searchParams.get('year') || null;
 
     try {
       let query = supabase
@@ -33,6 +34,11 @@ export const handler = define.handlers({
       // Filtrar por best_of si se especifica
       if (bestOf) {
         query = query.eq('best_of', parseInt(bestOf));
+      }
+
+      // Filtrar por año si se especifica
+      if (year) {
+        query = query.eq('tournaments.year', parseInt(year));
       }
 
       const { data, error } = await query;

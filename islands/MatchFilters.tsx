@@ -5,6 +5,7 @@ export default function MatchFilters() {
     const [surfaces, setSurfaces] = useState<string[]>([]);
     const [round, setRound] = useState<string>('');
     const [bestOf, setBestOf] = useState<string>('');
+    const [year, setYear] = useState<string>('');
     const [loading, setLoading] = useState(false);
     const [matches, setMatches] = useState<Matches[]>([]);
 
@@ -34,6 +35,9 @@ export default function MatchFilters() {
             }
             if (bestOf) {
                 params.append('bestOf', bestOf);
+            }
+            if (year) {
+                params.append('year', year);
             }
 
             const response = await fetch(`/api/matches/search?${params.toString()}`);
@@ -90,6 +94,21 @@ export default function MatchFilters() {
                         <option value="R32">R32</option>
                         <option value="R64">R64</option>
                         <option value="R128">R128</option>
+                    </select>
+                </div>
+
+                {/* Filtro de Año */}
+                <div class="filter-group">
+                    <h3>Año</h3>
+                    <select 
+                        class="filter-select" 
+                        value={year} 
+                        onChange={(e) => setYear((e.target as HTMLSelectElement).value)}
+                    >
+                        <option value="">Todos</option>
+                        {Array.from({ length: 26 }, (_, i) => 2025 - i).map(y => (
+                            <option key={y} value={y}>{y}</option>
+                        ))}
                     </select>
                 </div>
 
