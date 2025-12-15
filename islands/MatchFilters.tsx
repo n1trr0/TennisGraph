@@ -8,6 +8,12 @@ export default function MatchFilters() {
     const [loading, setLoading] = useState(false);
     const [matches, setMatches] = useState<Matches[]>([]);
 
+    const formatLabel = (name?: string, seed?: number | null, entry?: string | null) => {
+        if (seed !== null && seed !== undefined) return `${name ?? ''} (${seed})`;
+        if (entry) return `${name ?? ''} (${entry})`;
+        return name ?? '';
+    };
+
     const toggleSurface = (surface: string) => {
         if (surfaces.includes(surface)) {
             setSurfaces(surfaces.filter(s => s !== surface));
@@ -147,11 +153,11 @@ export default function MatchFilters() {
                                     </div>
                                     <div class="match-score">
                                         <div class="player-row winner">
-                                            <span class="player-label">{winner?.name_full || 'Ganador'}</span>
+                                            <span class="player-label">{formatLabel(winner?.name_full, match.winner_seed, match.winner_entry) || 'Ganador'}</span>
                                             <span class="score">{match.score}</span>
                                         </div>
                                         <div class="player-row loser">
-                                            <span class="player-label">{loser?.name_full || 'Perdedor'}</span>
+                                            <span class="player-label">{formatLabel(loser?.name_full, match.loser_seed, match.loser_entry) || 'Perdedor'}</span>
                                         </div>
                                     </div>
                                     <div class="match-footer">
