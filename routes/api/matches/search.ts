@@ -11,7 +11,12 @@ export const handler = define.handlers({
     try {
       let query = supabase
         .from('matches')
-        .select('*, tournaments!inner(tourney_name, surface, year)')
+        .select(`
+          *, 
+          tournaments!inner(tourney_name, surface, year),
+          winner:players!winner_id(name_full),
+          loser:players!loser_id(name_full)
+        `)
         .order('tournaments(year)', { ascending: false })
         .limit(50);
 

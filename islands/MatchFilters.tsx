@@ -134,6 +134,8 @@ export default function MatchFilters() {
                     <div class="matches-list">
                         {matches.map((match) => {
                             const tournament = (match.tournaments as unknown as { tourney_name: string; surface: string; year: number });
+                            const winner = (match.winner as unknown as { name_full: string });
+                            const loser = (match.loser as unknown as { name_full: string });
                             
                             return (
                                 <div key={match.match_id} class="match-card">
@@ -145,11 +147,11 @@ export default function MatchFilters() {
                                     </div>
                                     <div class="match-score">
                                         <div class="player-row winner">
-                                            <span class="player-label">Ganador</span>
+                                            <span class="player-label">{winner?.name_full || 'Ganador'}</span>
                                             <span class="score">{match.score}</span>
                                         </div>
                                         <div class="player-row loser">
-                                            <span class="player-label">Perdedor</span>
+                                            <span class="player-label">{loser?.name_full || 'Perdedor'}</span>
                                         </div>
                                     </div>
                                     <div class="match-footer">

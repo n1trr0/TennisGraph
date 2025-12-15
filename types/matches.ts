@@ -32,4 +32,8 @@ export interface Matches {
     l_bpSaved: number | null;              // Break points salvados del perdedor
     l_bpFaced: number | null;              // Break points enfrentados del perdedor
     l_SvGms: number | null;                // Juegos de servicio del perdedor (service games)
+    // Campos opcionales que vienen de joins
+    winner?: { name_full: string };        // Datos del jugador ganador (join)
+    loser?: { name_full: string };         // Datos del jugador perdedor (join)
+    tournaments?: unknown;                 // Datos del torneo (join)
 }
