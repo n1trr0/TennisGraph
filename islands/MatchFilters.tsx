@@ -55,57 +55,57 @@ export default function MatchFilters() {
             <div class="filters-container">
                 {/* Filtro de Superficie */}
                 <div class="filter-group">
-                    <h3>Superficie</h3>
+                    <h3>Surface</h3>
                     <div class="button-group">
                         <button 
                             class={surfaces.includes('Hard') ? 'filter-btn active' : 'filter-btn'}
                             onClick={() => toggleSurface('Hard')}
                         >
-                            Dura
+                            Hard
                         </button>
                         <button 
                             class={surfaces.includes('Clay') ? 'filter-btn active' : 'filter-btn'}
                             onClick={() => toggleSurface('Clay')}
                         >
-                            Tierra
+                            Clay
                         </button>
                         <button 
                             class={surfaces.includes('Grass') ? 'filter-btn active' : 'filter-btn'}
                             onClick={() => toggleSurface('Grass')}
                         >
-                            Hierba
+                            Grass
                         </button>
                     </div>
                 </div>
 
                 {/* Filtro de Ronda */}
                 <div class="filter-group">
-                    <h3>Ronda</h3>
+                    <h3>Round</h3>
                     <select 
                         class="filter-select" 
                         value={round} 
                         onChange={(e) => setRound((e.target as HTMLSelectElement).value)}
                     >
-                        <option value="">Todas</option>
-                        <option value="F">Final</option>
-                        <option value="SF">Semifinal</option>
-                        <option value="QF">Cuartos de Final</option>
-                        <option value="R16">Octavos de Final</option>
-                        <option value="R32">R32</option>
-                        <option value="R64">R64</option>
-                        <option value="R128">R128</option>
+                        <option value="">""</option>
+                        <option value="F">Finals</option>
+                        <option value="SF">Semifinals</option>
+                        <option value="QF">Quarterfinals</option>
+                        <option value="R16">Round 4</option>
+                        <option value="R32">Round 3</option>
+                        <option value="R64">Round 2</option>
+                        <option value="R128">Round 1</option>
                     </select>
                 </div>
 
                 {/* Filtro de Año */}
                 <div class="filter-group">
-                    <h3>Año</h3>
+                    <h3>Year</h3>
                     <select 
                         class="filter-select" 
                         value={year} 
                         onChange={(e) => setYear((e.target as HTMLSelectElement).value)}
                     >
-                        <option value="">Todos</option>
+                        <option value="">""</option>
                         {Array.from({ length: 26 }, (_, i) => 2025 - i).map(y => (
                             <option key={y} value={y}>{y}</option>
                         ))}

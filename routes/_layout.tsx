@@ -2,19 +2,12 @@ import { PageProps } from "fresh";
 
 export default function Layout({ Component }: PageProps) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-black shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center h-16 space-x-12">
-            <a href="/" className="text-2xl font-bold text-white hover:text-gray-300 transition-colors">
-              Home
-            </a>
-            <a 
-              href="/" 
-              className="text-base font-medium text-gray-300 hover:text-white transition-colors px-4 py-2"
-            >
-              Coming soon...
-            </a>
+    <div class="min-h-screen bg-gray-50">
+      <nav style="background-color: #f9fafb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); padding: 1rem 0;">
+        <div style="max-width: 80rem; margin: 0 auto; padding: 0 1rem;">
+          <div class="player-nav" style="justify-content: center;">
+            <a href="/" style="flex: 0;">Home</a>
+            <a href="/matches" style="flex: 0;">Matches</a>
           </div>
         </div>
       </nav>
