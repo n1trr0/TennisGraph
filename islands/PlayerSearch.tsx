@@ -34,7 +34,7 @@ export default function PlayerSearch() {
   };
 
   return (
-    <div className="w-full max-w-6xl px-4">
+    <div className="w-full max-w-6xl px-4" style={{ marginTop: '4rem' }}>
       <form onSubmit={handleSearch} className="relative mb-8" style={{ minWidth: '300px' }}>
         <input
           type="text"
@@ -43,8 +43,27 @@ export default function PlayerSearch() {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           placeholder="Buscar jugador..."
-          className="w-full px-6 py-5 text-2xl bg-white border-2 border-gray-800 rounded-xl focus:outline-none focus:border-blue-600 transition-colors shadow-lg"
-          style={{ minWidth: '300px' }}
+          style={{ 
+            minWidth: '300px',
+            width: '100%',
+            padding: 'calc(0.25rem * 3) calc(0.25rem * 6)',
+            fontSize: '1.25rem',
+            border: '1px solid #ebebeb',
+            borderRadius: '9999px',
+            backgroundColor: '#fff',
+            color: '#202124',
+            outline: 'none',
+            transition: 'all 0.2s ease-in-out',
+            boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = '#a3a8ad';
+            e.currentTarget.style.borderColor = '#a3a8ad';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = '#fff';
+            e.currentTarget.style.borderColor = '#ebebeb';
+          }}
         />
       </form>
 
@@ -54,8 +73,27 @@ export default function PlayerSearch() {
             <a
               key={player.id}
               href={`/players/${player.id}`}
-              className="block bg-white border-2 border-gray-800 hover:border-blue-600 rounded-xl px-6 py-4 transition-all hover:shadow-lg"
-              style={{ textDecoration: 'none', color: 'inherit' }}
+              style={{ 
+                display: 'block',
+                textDecoration: 'none',
+                color: 'inherit',
+                padding: 'calc(0.25rem * 3) calc(0.25rem * 6)',
+                border: '1px solid #ebebeb',
+                borderRadius: '9999px',
+                backgroundColor: '#fff',
+                transition: 'all 0.2s ease-in-out',
+                marginBottom: '0.75rem'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#a3a8ad';
+                e.currentTarget.style.borderColor = '#a3a8ad';
+                e.currentTarget.style.color = '#010101';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#fff';
+                e.currentTarget.style.borderColor = '#ebebeb';
+                e.currentTarget.style.color = 'inherit';
+              }}
             >
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
