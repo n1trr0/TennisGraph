@@ -163,7 +163,12 @@ export default function MatchFilters() {
                             const loser = (match.loser as unknown as { name_full: string });
                             
                             return (
-                                <div key={match.match_id} class="match-card">
+                                <a 
+                                    key={match.match_id} 
+                                    href={`/match/${match.match_id}`}
+                                    class="match-card"
+                                    style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+                                >
                                     <div class="match-header">
                                         <span class="tournament-name">{tournament?.tourney_name}</span>
                                         <span class="match-details">
@@ -183,7 +188,7 @@ export default function MatchFilters() {
                                         <span>Best of {match.best_of}</span>
                                         {match.minutes && <span>{match.minutes} min</span>}
                                     </div>
-                                </div>
+                                </a>
                             );
                         })}
                     </div>
