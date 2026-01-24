@@ -1,0 +1,26 @@
+name: Keep Alive Job
+
+on:
+  schedule:
+    # Ejecutar todos los días a las 8:00 AM UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Permite ejecutar manualmente el workflow
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Hacer petición HTTP para mantener la app activa
+        run: |
+          echo "Haciendo petición a TennisGraph..."
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://tennisgraph.n1tr0.deno.dev/players/f14ccb0f-74c7-4c87-88a1-b03544378d52/trophies)
+          echo "Código de respuesta: $response"
+          if [ $response -eq 200 ] || [ $response -eq 304 ]; then
+            echo "✅ Petición exitosa - La app está activa"
+          else
+            echo "⚠️ Código de respuesta inesperado: $response"
+          fi
+      
+      - name: Timestamp
+        run: echo "Job ejecutado el $(date)"
