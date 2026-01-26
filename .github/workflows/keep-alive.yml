@@ -14,7 +14,7 @@ jobs:
       - name: Hacer petición HTTP para mantener la app activa
         run: |
           echo "Haciendo petición a TennisGraph..."
-          response=$(curl -L -s -o /dev/null -w "%{http_code}" --max-time 30 https://tennisgraph.n1tr0.deno.dev/players/f14ccb0f-74c7-4c87-88a1-b03544378d52/trophies || echo "000")
+          response=$(curl -L -s -o /dev/null -w "%{http_code}" --max-time 30 https://tennisgraph.n1tr0.deno.net/players/f14ccb0f-74c7-4c87-88a1-b03544378d52/trophies || echo "000")
           echo "Código de respuesta: $response"
           if [ "$response" = "200" ] || [ "$response" = "304" ]; then
             echo "✅ Petición exitosa - La app está activa"
