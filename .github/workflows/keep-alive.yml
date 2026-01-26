@@ -14,16 +14,24 @@ jobs:
       - name: Hacer petición HTTP para mantener la app activa
         run: |
           echo "Haciendo petición a TennisGraph..."
-          response=$(curl -L -s -o /dev/null -w "%{http_code}" --max-time 30 https://tennisgraph.n1tr0.deno.dev/players/f14ccb0f-74c7-4c87-88a1-b03544378d52/trophies || echo "000")
-          echo "Código de respuesta: $response"
-          if [ "$response" = "200" ] || [ "$response" = "304" ]; then
-            echo "✅ Petición exitosa - La app está activa"
-          elif [ "$response" = "000" ]; then
-            echo "⚠️ Error en la petición curl"
+          http_code=$(curl -L -s -o /dev/null -w "%{http_code}" --connect-timeout 10 --max-time 30 https://tennisgraph.n1tr0.deno.dev/players/f14ccb0f-74c7-4c87-88a1-b03544378d52/trophies)
+          exit_code=$?
+          
+          echo "Código de respuesta HTTP: $http_code"
+          echo "Exit code de curl: $exit_code"
+          
+          if [ $exit_code -eq 0 ]; then
+            if [ "$http_code" = "200" ] || [ "$http_code" = "304" ]; then
+              echo "✅ Petición exitosa - La app está activa"
+              exit 0
+            else
+              echo "⚠️ Código de respuesta inesperado: $http_code"
+              exit 0
+            fi
           else
-            echo "⚠️ Código de respuesta inesperado: $response"
+            echo "❌ Error al hacer la petición (curl exit code: $exit_code)"
+            exit 0
           fi
-          echo "Job completado"
       
       - name: Timestamp
         run: echo "Job ejecutado el $(date)"
